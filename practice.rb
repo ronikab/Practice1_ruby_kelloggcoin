@@ -35,48 +35,83 @@ blockchain = [
 names =["ben", "brian", "evan", "anthony"]
 # p names
 
-# wallet=[
+# all for ben:
+# wallet_ben=[
 #   blockchain[0]["amount"]+
 #   blockchain[6]["amount"]-
 #   blockchain[2]["amount"]-
 #   blockchain[5]["amount"]
 # ]
-# puts wallet
+# puts wallet_ben
 
 # p blockchain[2]["amount"] if blockchain[2]["from_user"]== "ben"
 # p blockchain[2]["amount"] if blockchain[2]["from_user"]== "#{names[0]}"
 
-# block_index = 2 ## from
-# name_index = 0 ## ben
+# txn = 2 ## from
+# name = 0 ## ben
 
-# wallet = []
-# amount = blockchain[block_index]["amount"] if blockchain[block_index]["from_user"]== "#{names[name_index]}"
+# wallet= []
+# amount = blockchain[txn]["amount"] if blockchain[txn]["from_user"]== "ben"
 # wallet.push(amount)
 # puts wallet
 
-
-
-
-wallet = []
-for block_index in blockchain
-  for name_index in names
-amount = blockchain["amount"] if blockchain["from_user"]== "#{names}"
-wallet.push(amount)
+ben_wallet=0
+for txn in blockchain
+  if txn["to_user"]== "ben"
+     ben_wallet = ben_wallet + txn["amount"] 
+  else 0
+  end
+  if txn["from_user"] == "ben"
+    ben_wallet = ben_wallet - txn["amount"]
   end
 end
-puts wallet
+# p ben_wallet
+
+
+brian_wallet=0
+for txn in blockchain
+  if txn["to_user"]== "brian"
+     brian_wallet = brian_wallet + txn["amount"] 
+  else 0
+  end
+  if txn["from_user"] == "brian"
+    brian_wallet = brian_wallet - txn["amount"]
+  end
+end
+# p brian_wallet
+
+evan_wallet=0
+for txn in blockchain
+  if txn["to_user"]== "evan"
+     evan_wallet = evan_wallet + txn["amount"] 
+  else 0
+  end
+  if txn["from_user"] == "evan"
+    evan_wallet = evan_wallet - txn["amount"]
+  end
+end
+# p evan_wallet
+
+
+anthony_wallet=0
+for txn in blockchain
+  if txn["to_user"]== "anthony"
+     anthony_wallet = anthony_wallet + txn["amount"] 
+  else 0
+  end
+  if txn["from_user"] == "anthony"
+    anthony_wallet = anthony_wallet - txn["amount"]
+  end
+end
+# p anthony_wallet
 
 
 
-# position = 0
-# if blockchain["to_user"][0]=="ben"
-#   increase = blockchain["amount"][0]
-#   ben.push(increase)
+# 
 
-# end
-
-# Ben's KelloggCoin balance is 14000
-# Brian's KelloggCoin balance is 13000
-# Evan's KelloggCoin balance is 10350
-# Anthony's KelloggCoin balance is 2650
+# puts names[0]
+puts "#{names[0]}'s KelloggCoin balance is #{ben_wallet}"
+puts "#{names[1]}'s KelloggCoin balance is #{brian_wallet}"
+puts "#{names[2]} KelloggCoin balance is #{evan_wallet}"
+puts "#{names[3]}'s KelloggCoin balance is #{anthony_wallet}"
 
